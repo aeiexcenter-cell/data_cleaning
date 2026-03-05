@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["schema_version", "course"],
+  "properties": {
+    "schema_version": {"type": "string"},
+    "course": {
+      "type": "object",
+      "required": ["course_id", "course_name", "chapters"],
+      "properties": {
+        "course_id": {"type": "string", "pattern": "^[A-Z0-9_]+$"},
+        "course_name": {"type": "string"},
+        "chapters": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["chapter_id", "chapter_name", "units"],
+            "properties": {
+              "chapter_id": {"type": "string"},
+              "chapter_name": {"type": "string"},
+              "units": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": ["unit_id", "unit_name", "kps"],
+                  "properties": {
+                    "unit_id": {"type": "string"},
+                    "unit_name": {"type": "string"},
+                    "kps": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "required": ["kp_id"],
+                        "properties": {"kp_id": {"type": "string"}}
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
